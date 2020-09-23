@@ -11,7 +11,7 @@ export const MeasureVitalsNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Vitals" component={Vitals} options={{header: ()=> null}}/>
-      <Stack.Screen name="MeasureVitals" component={MeasureVitals} />
+      <Stack.Screen name="MeasureVitals" component={MeasureVitals} options={{header: ()=> null}}/>
     </Stack.Navigator>
   );
 };
