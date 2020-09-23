@@ -24,6 +24,19 @@ function Vitals({navigation}) {
     <Center>
       <Text>Measure your vitals</Text>
       <Button 
+        title='Check with your doctor' 
+        onPress={()=> navigation.navigate('Doctor')}
+        />
+    </Center>
+  )
+}
+
+
+function Doctor({navigation}) {
+  return(
+    <Center>
+      <Text>You're healthy!</Text>
+      <Button 
         title='Go back home' 
         onPress={()=> navigation.navigate('Home')}
         />
@@ -47,6 +60,10 @@ export default function Routes() {
         <Stack.Screen 
           name='Vitals' 
           component={Vitals}
+        />
+        <Stack.Screen 
+          name='Doctor' 
+          component={Doctor}
         />
       </Stack.Navigator>
     </NavigationContainer>
