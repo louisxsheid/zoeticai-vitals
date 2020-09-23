@@ -7,7 +7,7 @@ import { Center } from '../components/Center';
 export const Home = () => {
   return(
     <Center>
-      <Text>Home page</Text>
+      <Text style={{ color: 'white' }}>Home page</Text>
     </Center>
   )
 }

@@ -34,7 +34,7 @@ export const TodayDate = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: 'dodgerblue',
+    backgroundColor: 'black',
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight: 0,
     alignItems: 'center',
     width: '100%',
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'black'
+    color: 'white'
   }
 });
