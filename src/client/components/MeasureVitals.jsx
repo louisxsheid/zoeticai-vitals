@@ -1,10 +1,14 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 
+import { Center } from './Center';
+
 export const MeasureVitals = () => {
   return(
-    <Text>
-      MeasureVitals Page
-    </Text>
+    <Center>
+      <Text>
+        MeasureVitals Page
+      </Text>
+    </Center>
   )
 }
