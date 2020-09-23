@@ -18,7 +18,7 @@ import {
 
 const moment = require('moment');
 
-export default function Calendar() {
+export const Calendar = () => {
 
   const todayNum = moment().format('l').split('/')[1];
 
@@ -140,10 +140,10 @@ export default function Calendar() {
         </TouchableHighlight>
 
       </View>
-      <Text style={styles.showData}>
+      {/* <Text style={styles.showData}>
         showing data for 
         {" " + moment().format('ll').split(' ')[0]} {pressedNum}
-      </Text>
+      </Text> */}
     </SafeAreaView>
   );
 }
@@ -151,9 +151,9 @@ export default function Calendar() {
 
 let styles = StyleSheet.create({
   container: {
-    // backgroundColor: '#fff',
+    // backgroundColor: 'black',
     alignItems: "center",
-    flex: 12,
+    // flex: 12,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     width: '100%',
     fontSize: 25,
@@ -164,7 +164,7 @@ let styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: "space-around",
     alignItems: 'center',
-    height: '10%',
+    height: 60,
     // flex: 1,
     borderRadius: 10,
     width: '95%',
@@ -181,6 +181,7 @@ let styles = StyleSheet.create({
     display: 'flex',
     textAlign: 'center',
     color: 'black',
-    fontSize: 20
+    fontSize: 20,
+    // backgroundColor: 'black'
   }
 });
