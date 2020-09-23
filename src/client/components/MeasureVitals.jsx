@@ -6,7 +6,7 @@ import { Center } from './Center';
 export const MeasureVitals = () => {
   return(
     <Center>
-      <Text>
+      <Text style={{color: 'white'}}>
         MeasureVitals Page
       </Text>
     </Center>
