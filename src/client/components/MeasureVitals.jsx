@@ -35,7 +35,7 @@ export const MeasureVitals = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Text style={styles.title}>Measure vitals for today: {moment().format('ll')} </Text>
+      <Text style={styles.title}>Today's Vitals ➜ {moment().format("MMM D")}</Text>
       <FlatGrid
         itemDimension={200}
         data={temperature}
