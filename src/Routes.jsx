@@ -1,15 +1,17 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+
+import { Center } from './Center'
 
 const Stack = createStackNavigator();
 
 function Home() {
   return(
-    <View>
+    <Center>
       <Text>Home page: Measure your vitals!</Text>
-    </View>
+    </Center>
   )
 }
 
@@ -22,3 +24,11 @@ export default function Routes() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center'
+  }
+})
