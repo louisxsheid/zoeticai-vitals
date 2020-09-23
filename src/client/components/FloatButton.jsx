@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-
 import {
   StyleSheet,
   View,
@@ -11,10 +8,6 @@ import {
   Alert,
   Text,
 } from "react-native";
-
-import { MeasureVitals } from "./MeasureVitals";
-
-const Stack = createStackNavigator();
 
 export const FloatButton = ({ navigation }) => {
   return (
@@ -36,12 +29,6 @@ export const FloatButton = ({ navigation }) => {
     </>
   );
 };
-
-// export const MeasureRoute = () => {
-//   <NavigationContainer>
-//     <Stack.Screen name="MeasureVitals" component={MeasureVitals} />
-//   </NavigationContainer>;
-// };
 
 const styles = StyleSheet.create({
   text: {

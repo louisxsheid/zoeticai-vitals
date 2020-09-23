@@ -8,7 +8,7 @@ export const Center = ({children}) => {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: 'black',
+      backgroundColor: 'white',
     }}>
       {children}
     </View>

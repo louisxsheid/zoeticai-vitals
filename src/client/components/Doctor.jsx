@@ -1,13 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, Image } from "react-native";
 
-import { Center } from '../components/Center';
+import { Center } from "../components/Center";
 
 export const Doctor = () => {
-  return(
+  return (
     <Center>
-      <Text style={{ color: 'white' }}>Doctor page</Text>
-    </Center>
-  )
-}
+      <Text style={{color: 'black', fontSize: 25}}>You're healthy!</Text>
+      <Image
+        source={require('../../../assets/house.gif')}
+        style={{height: 250, width: 250}}
+      />
+  </Center>
+  );
+};
