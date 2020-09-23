@@ -4,34 +4,119 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { FlatGrid } from "react-native-super-grid";
 import { Center } from "./Center";
 
+const moment = require('moment');
+
 export const MeasureVitals = ({ navigation }) => {
-  const [items, setItems] = React.useState([
-    { name: "Temperature", code: "#c0392b", data: "97.6" },
-    { name: "Blood Pressure", code: "#e74c3c", data: "124/40" },
-    { name: "Oximeter", code: "#3498db", data: "96% 78bpm" },
+  const [temperature, setTemperature] = React.useState([
+    {
+      name: "Temperature",
+      code: "#e74c3c",
+      data: "Tap to take your temperature",
+    },
   ]);
+
+  const [bloodPressure, setBloodPressure] = React.useState([
+    {
+      name: "Blood Pressure",
+      code: '#2c3e50',
+      data: "Tap to take check blood pressure",
+    },
+  ]);
+
+  const [oxygen, setOxygen] = React.useState([
+    {
+      name: "Oximeter",
+      code: "#3498db",
+      data: "Tap to check your oxygen levels",
+    },
+  ]);
+
+  console.log(oxygen.code);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      {/* <View style={{display: 'flex',float: 'left', margin: 0}}>
-        <Button title="←vitals" onPress={() => navigation.goBack()} />
-      </View> */}
-        <Text style={styles.title}>Measure Vitals for today</Text>
+      <Text style={styles.title}>Measure vitals for today: {moment().format('ll')} </Text>
       <FlatGrid
         itemDimension={200}
-        data={items}
+        data={temperature}
         style={styles.gridView}
-        // staticDimension={300}
-        // fixed
         spacing={10}
         renderItem={({ item }) => (
-          <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
-            <Text style={styles.itemName}>{item.name}</Text>
-            <Text style={styles.itemCode}>{item.data}</Text>
-          </View>
+          <TouchableOpacity
+            onPress={() => {
+              setTemperature([
+                {
+                  name: item.name,
+                  code: item.code,
+                  data: Math.floor(Math.random() * (10 * 10 - 1 * 10) + 1 * 10) / (1 * 10) + 93,
+                },
+              ]);
+            }}
+          >
+            <View
+              style={[styles.itemContainer, { backgroundColor: item.code }]}
+            >
+              <Text style={styles.itemName}>{item.name}</Text>
+              <Text style={styles.itemCode}>{item.data}</Text>
+            </View>
+          </TouchableOpacity>
         )}
       />
-      <TouchableOpacity style={styles.completeContainer}>
+      <FlatGrid
+        itemDimension={200}
+        data={bloodPressure}
+        style={styles.gridView}
+        spacing={10}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => {
+              setBloodPressure([
+                {
+                  name: item.name,
+                  code: item.code,
+                  data: `${Math.floor(Math.random() * 20 + 120)}/${Math.floor(Math.random() * 20 + 60)}`,
+                },
+              ]);
+            }}
+          >
+            <View
+              style={[styles.itemContainer, { backgroundColor: item.code }]}
+            >
+              <Text style={styles.itemName}>{item.name}</Text>
+              <Text style={styles.itemCode}>{item.data}</Text>
+            </View>
+          </TouchableOpacity>
+        )}
+      />
+
+      <FlatGrid
+        itemDimension={200}
+        data={oxygen}
+        style={styles.gridView}
+        spacing={10}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+          onPress={() => {
+            setOxygen([
+              {
+                name: item.name,
+                code: item.code,
+                data: `${Math.floor(Math.random() * 5 + 95)}% ${Math.floor(Math.random() * 20 + 70)}bpm`,
+              },
+            ]);
+          }}
+        >
+            <View
+              style={[styles.itemContainer, { backgroundColor: item.code }]}
+            >
+              <Text style={styles.itemName}>{item.name}</Text>
+              <Text style={styles.itemCode}>{item.data}</Text>
+            </View>
+          </TouchableOpacity>
+        )}
+      />
+
+      <TouchableOpacity style={styles.completeContainer} onPress={() => navigation.goBack()}>
         <Text style={styles.complete}>COMPLETE</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -56,25 +141,25 @@ const styles = StyleSheet.create({
   },
   itemCode: {
     fontWeight: "600",
-    fontSize: 50,
+    fontSize: 40,
     color: "#fff",
-    textAlign: 'right'
+    textAlign: "right",
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
     width: "100%",
   },
   completeContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   complete: {
-    color: '#007AFF',
-    width: '40%',
+    color: "#007AFF",
+    width: "40%",
     height: 50,
     fontSize: 30,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  }
+    fontWeight: "bold",
+    textAlign: "center",
+  },
 });

@@ -1,17 +1,28 @@
-import React from 'react';
+import React from "react";
 
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, Image } from "react-native";
 
-import { Center } from '../components/Center';
-import { FloatButton } from './FloatButton';
+import { Center } from "../components/Center";
 
-export const Home = ({navigation}) => {
-  return(
-    <>
+export const Home = ({ navigation }) => {
+  return (
     <Center>
-      <Text style={{ color: 'black', fontSize: 25 }}>Home page</Text>
+      <Text
+        style={{ 
+          color: "black", 
+          fontSize: 35, 
+          margin: 10, 
+          fontWeight: "bold" 
+        }}>
+        V I T A L S
+      </Text>
+      <Image
+        source={{uri: "https://www.pinclipart.com/picdir/big/127-1279384_health-icons-heartbeat-icon-transparent-background-clipart.png"}}
+        style={{ 
+          height: 200, 
+          width: 232, 
+          margin: 0 
+        }}/>
     </Center>
-    {/* <FloatButton navigation={navigation}/> */}
-    </>
-  )
-}
+  );
+};

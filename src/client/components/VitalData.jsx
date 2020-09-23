@@ -6,13 +6,19 @@ import {
   useDimensions,
   useDeviceOrientation,
 } from "@react-native-community/hooks";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-export const VitalData = () => {
+export const VitalData = ({ navigation }) => {
   const [items, setItems] = React.useState([
-    { name: "Temperature", code: "#c0392b", data: "97.6" },
-    { name: "Blood Pressure", code: "#e74c3c", data: "124/40" },
-    { name: "Oximeter", code: "#3498db", data: "96% 78bpm" },
-    { name: "Patient History", code: "#9b59b6", data: "Louis Sheid" },
+    { name: "Temperature", code: "#c0392b", data: "97.6", action: null },
+    { name: "Blood Pressure", code: "#e74c3c", data: "124/40", action: null },
+    { name: "Oximeter", code: "#3498db", data: "96% 78bpm", action: null },
+    {
+      name: "Patient History",
+      code: "#9b59b6",
+      data: "Louis Sheid",
+      action: () => navigation.navigate("PatientHistory"),
+    },
   ]);
 
   return (
@@ -25,10 +31,14 @@ export const VitalData = () => {
         // fixed
         spacing={10}
         renderItem={({ item }) => (
-          <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
-            <Text style={styles.itemName}>{item.name}</Text>
-            <Text style={styles.itemCode}>{item.data}</Text>
-          </View>
+          <TouchableOpacity onPress={item.action}>
+            <View
+              style={[styles.itemContainer, { backgroundColor: item.code }]}
+            >
+              <Text style={styles.itemName}>{item.name}</Text>
+              <Text style={styles.itemCode}>{item.data}</Text>
+            </View>
+          </TouchableOpacity>
         )}
       />
     </SafeAreaView>

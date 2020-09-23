@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Home } from '../components/Home';
 import { Doctor } from '../components/Doctor';
 
-import {MeasureVitalsNavigator} from '../navigation/StackNavigator';
+import {VitalsNavigator} from '../navigation/StackNavigator';
 
 const Tabs = createBottomTabNavigator();
 
@@ -23,7 +23,7 @@ export const AppTabs = ({}) => {
       }}
     >
       <Tabs.Screen name='Home' component={Home}/>
-      <Tabs.Screen name='Vitals' component={MeasureVitalsNavigator}/>
+      <Tabs.Screen name='Vitals' component={VitalsNavigator}/>
       <Tabs.Screen name='Doctor' component={Doctor}/>
     </Tabs.Navigator>
   )

@@ -17,7 +17,7 @@ export const Vitals = ({navigation}) => {
     <>
       <TodayDate/>
       <Calendar/>
-      <VitalData/>
+      <VitalData navigation={navigation}/>
       <FloatButton navigation={navigation}/>
     </>
   )
