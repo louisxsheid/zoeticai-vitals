@@ -19,7 +19,7 @@ export const AppTabs = ({}) => {
         },
         tabStyle: {
           backgroundColor: 'white'
-        }
+        },
       }}
     >
       <Tabs.Screen name='Home' component={Home}/>
