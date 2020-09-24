@@ -22,9 +22,6 @@ export const TodayDate = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Text style={{ fontSize: 15, color: 'black'}}>
-        Today is
-      </Text> */}
       <Text style={styles.text}>
       {moment().format('LL')}
       </Text>

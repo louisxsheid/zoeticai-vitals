@@ -27,10 +27,10 @@ const vitalSchema = mongoose.Schema({
 const Vital = mongoose.model("Vital", vitalSchema);
 
 // const testUser = {
-  // temperature: "98.5",
-  // "bloodPressure": "124/60",
-  // "oxygen": "98% 75bpm",
-  // "patient": 'test'
+//   temperature: "98.5",
+//   "bloodPressure": "124/60",
+//   "oxygen": "98% 75bpm",
+//   "patient": 'test'
 // };
 
 // const newTest = new Vital(testUser);

@@ -2,10 +2,6 @@ import React from "react";
 import { StyleSheet, View, Text, SafeAreaView } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-import {
-  useDimensions,
-  useDeviceOrientation,
-} from "@react-native-community/hooks";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const VitalData = ({ navigation }) => {
@@ -27,8 +23,6 @@ export const VitalData = ({ navigation }) => {
         itemDimension={150}
         data={items}
         style={styles.gridView}
-        // staticDimension={300}
-        // fixed
         spacing={10}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={item.action}>

@@ -38,4 +38,20 @@ requestController.getVitals = (req, res, next) => {
     });
 };
 
+// requestController.getVitalFromDay = (req, res, next) => {
+//   models
+//     .find()
+//     .exec()
+//     .then((vitalList) => {
+//       res.locals.vitals = vitalList;
+//       return next();
+//     })
+//     .catch((err) => {
+//       next({
+//         log: 'Error in getVitals controller',
+//         message: { err: `Error: ${err}` },
+//       });
+//     });
+// };
+
 module.exports = { requestController };
