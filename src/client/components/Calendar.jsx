@@ -11,11 +11,6 @@ import {
   Switch,
 } from "react-native";
 
-import {
-  useDimensions,
-  useDeviceOrientation,
-} from "@react-native-community/hooks";
-
 const moment = require("moment");
 
 export const Calendar = () => {
@@ -94,7 +89,6 @@ export const Calendar = () => {
     onPress: () => setPressedNum(days[6]),
   };
 
-  const { landscape } = useDeviceOrientation();
   let days = {
     num: [],
     name: [],
@@ -162,7 +156,7 @@ export const Calendar = () => {
         {" " + moment().format('ll').split(' ')[0]} {pressedNum}
       </Text> */}
     </SafeAreaView>
-  );
+  );  
 };
 
 let styles = StyleSheet.create({

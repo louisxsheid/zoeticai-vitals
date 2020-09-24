@@ -9,17 +9,9 @@ import {
   Text
 } from 'react-native';
 
-import { 
-  useDimensions, 
-  useDeviceOrientation 
-} from '@react-native-community/hooks';
-
 const moment = require('moment');
 
 export const TodayDate = () => {
-
-  const { landscape } = useDeviceOrientation();
-
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>

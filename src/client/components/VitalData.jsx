@@ -6,13 +6,13 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const VitalData = ({ navigation }) => {
   const [items, setItems] = React.useState([
-    { name: "Temperature", code: "#c0392b", data: "97.6", action: null },
-    { name: "Blood Pressure", code: "#e74c3c", data: "124/40", action: null },
-    { name: "Oximeter", code: "#3498db", data: "96% 78bpm", action: null },
+    { name: "Temperature", code: "#c0392b", data: "no data", action: null },
+    { name: "Blood Pressure", code: "#e74c3c", data: "no data", action: null },
+    { name: "Oximeter", code: "#3498db", data: "no data", action: null },
     {
       name: "Patient History",
       code: "#9b59b6",
-      data: "Louis Sheid",
+      data: "User",
       action: () => navigation.navigate("PatientHistory"),
     },
   ]);
