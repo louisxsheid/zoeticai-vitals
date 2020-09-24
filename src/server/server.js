@@ -3,7 +3,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const app = express();
 
-// Bring in routes
+const { requestController } = require('./controllers/requestController');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -13,22 +13,25 @@ app.get("/", (req, res) => {
 });
 
 // // CONNECT TO MONGO DB
-// mongoose.connect(process.env.DB_CONNECTION, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+mongoose.connect(process.env.DB_CONNECTION, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-// mongoose.connection.on("connected", () => {
-//   console.log("connected to database!");
-// });
+mongoose.connection.on("connected", () => {
+  console.log("connected to database!");
+});
 
-// mongoose.connection.on("error", (err) => {
-//   console.log("ERROR CONNECTING TO DATABASE: ", err);
-// });
+mongoose.connection.on("error", (err) => {
+  console.log("ERROR CONNECTING TO DATABASE: ", err);
+});
 
-// postRequest route
-app.post("/data", requestController.postRequest, (req, res) => {
-  return res.status(200).json(res.locals.data);
+app.get("/data", requestController.getVitals, (req, res) => {
+  return res.status(200).send(res.locals.vitals);//.json(res.locals.data);
+});
+
+app.post("/data", requestController.postVitals, (req, res) => {
+  return res.status(200).send(res.locals.vitals)//.json(res.locals.data);
 });
 
 // Global Error handler

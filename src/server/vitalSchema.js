@@ -14,6 +14,10 @@ const vitalSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  patient: {
+    type: String,
+    required: true,
+  },
   time: { 
     type: Date, 
     default: Date.now 
@@ -22,18 +26,19 @@ const vitalSchema = mongoose.Schema({
 
 const Vital = mongoose.model("Vital", vitalSchema);
 
-const testUser = {
-  temperature: "cherie",
-  bloodPressure: "cherie@codesmith.io",
-  oxygen: "123",
-};
+// const testUser = {
+  // temperature: "98.5",
+  // "bloodPressure": "124/60",
+  // "oxygen": "98% 75bpm",
+  // "patient": 'test'
+// };
 
-const newTest = new Vital(testUser);
+// const newTest = new Vital(testUser);
 
-newTest.save((err) => {
-  if (err) {
-    console.log(err);
-  } else console.log("added to DB");
-});
+// newTest.save((err) => {
+//   if (err) {
+//     console.log(err);
+//   } else console.log("added to DB");
+// });
 
 module.exports = Vital;
