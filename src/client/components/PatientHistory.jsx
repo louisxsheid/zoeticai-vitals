@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Text, Button, View, StyleSheet, ScrollView } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const moment = require("moment");
-
-export const PatientHistory = ({ navigation }) => {
+export const PatientHistory = () => {
   const [state, setState] = useState([]);
   const [loading, setloading] = useState(true);
   useEffect(() => {
@@ -62,7 +60,6 @@ export const PatientHistory = ({ navigation }) => {
 const styles = new StyleSheet.create({
   title: {
     textAlign: "center",
-    // paddingTop: 40,
     fontSize: 40,
     fontWeight: "bold",
   },

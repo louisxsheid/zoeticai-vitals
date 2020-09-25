@@ -1,9 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import { Home } from '../components/Home';
 import { Doctor } from '../components/Doctor';
-
 import {VitalsNavigator} from '../navigation/StackNavigator';
 
 const Tabs = createBottomTabNavigator();

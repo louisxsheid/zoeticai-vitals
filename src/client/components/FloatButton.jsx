@@ -1,12 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
 import {
   StyleSheet,
-  View,
   Image,
   TouchableOpacity,
-  Alert,
-  Text,
 } from "react-native";
 
 export const FloatButton = ({ navigation }) => {

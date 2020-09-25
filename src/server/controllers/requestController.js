@@ -1,10 +1,7 @@
-// Bring in task model
 const models = require('../vitalSchema');
 
-// create task controller
 const requestController = {};
 
-// add request middleware
 requestController.postVitals = (req, res, next) => {
   const { temperature, bloodPressure, oxygen, date } = req.body;
   models
@@ -21,7 +18,6 @@ requestController.postVitals = (req, res, next) => {
     });
 };
 
-// get vitals middleware
 requestController.getVitals = (req, res, next) => {
   models
     .find()

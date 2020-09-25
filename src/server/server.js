@@ -12,7 +12,6 @@ app.get("/", (req, res) => {
   res.status(200).send("Nothing here yet");
 });
 
-// // CONNECT TO MONGO DB
 mongoose.connect(process.env.DB_CONNECTION, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -27,11 +26,11 @@ mongoose.connection.on("error", (err) => {
 });
 
 app.get("/data", requestController.getVitals, (req, res) => {
-  return res.status(200).send(res.locals.vitals);//.json(res.locals.data);
+  return res.status(200).send(res.locals.vitals);
 });
 
 app.post("/data", requestController.postVitals,  (req, res) => {
-  return res.status(200).send(res.locals.vitals)//.json(res.locals.data);
+  return res.status(200).send(res.locals.vitals)
 });
 
 app.post('/day-data', requestController.getVitalsFromDay, (req, res) => {

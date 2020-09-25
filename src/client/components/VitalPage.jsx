@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Dimensions,
   StyleSheet,
   SafeAreaView,
   Platform,
@@ -8,8 +7,6 @@ import {
   View,
   Text,
   TouchableHighlight,
-  Switch,
-  Alert
 } from "react-native";
 
 import { FlatGrid } from "react-native-super-grid";
@@ -19,9 +16,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 const moment = require("moment");
 
 export const VitalPage = ({ navigation }) => {
-  const todayNum = moment().format("l").split("/")[1];
 
-  const [pressedNum, setPressedNum] = useState(todayNum);
+  const [pressedNum, setPressedNum] = useState('...');
 
   let days = {
     num: [],
@@ -47,75 +43,77 @@ export const VitalPage = ({ navigation }) => {
 
   const setCards = (dayNum) => {
     console.log(dayNum);
-    setPressedNum(dayNum)
-    // const body = -Sep-2020`;
+    setPressedNum(dayNum);
     fetch("http://192.168.1.235:3001/day-data", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({"date": `${moment().format('L').split('/')[2]}-${moment().format('L').split('/')[0]}-${dayNum}`}),
-    })
-      .then((response) =>{
-        response = response.json().then(data => {
-          if(data[0]){
-            setItems([
-              {
-                name: "Temperature",
-                code: "#c0392b",
-                data: data[0].temperature,
-                action: null,
-              },
-              {
-                name: "Blood Pressure",
-                code: "#e74c3c",
-                data: data[0].bloodPressure,
-                action: null,
-              },
-              { 
-                name: "Oximeter", 
-                code: "#3498db", 
-                data:data[0].oxygen, 
-                action: null 
-              },
-              {
-                name: "Patient History",
-                code: "#9b59b6",
-                data: "User",
-                action: () => navigation.navigate("PatientHistory"),
-              },
-            ]);
-          } else {
-            setItems([
-              {
-                name: "Temperature",
-                code: "#c0392b",
-                data: "no data",
-                action: null,
-              },
-              {
-                name: "Blood Pressure",
-                code: "#e74c3c",
-                data: "no data",
-                action: null,
-              },
-              { 
-                name: "Oximeter", 
-                code: "#3498db", 
-                data: "no data",
-                action: null 
-              },
-              {
-                name: "Patient History",
-                code: "#9b59b6",
-                data: "User",
-                action: () => navigation.navigate("PatientHistory"),
-              },
-            ]);
-          }
-        })
-      })
+      body: JSON.stringify({
+        date: `${moment().format("L").split("/")[2]}-${
+          moment().format("L").split("/")[0]
+        }-${dayNum}`,
+      }),
+    }).then((response) => {
+      response = response.json().then((data) => {
+        if (data[0]) {
+          setItems([
+            {
+              name: "Temperature",
+              code: "#c0392b",
+              data: data[0].temperature,
+              action: null,
+            },
+            {
+              name: "Blood Pressure",
+              code: "#e74c3c",
+              data: data[0].bloodPressure,
+              action: null,
+            },
+            {
+              name: "Oximeter",
+              code: "#3498db",
+              data: data[0].oxygen,
+              action: null,
+            },
+            {
+              name: "Patient History",
+              code: "#9b59b6",
+              data: "User",
+              action: () => navigation.navigate("PatientHistory"),
+            },
+          ]);
+        } else {
+          setItems([
+            {
+              name: "Temperature",
+              code: "#c0392b",
+              data: "no data",
+              action: null,
+            },
+            {
+              name: "Blood Pressure",
+              code: "#e74c3c",
+              data: "no data",
+              action: null,
+            },
+            {
+              name: "Oximeter",
+              code: "#3498db",
+              data: "no data",
+              action: null,
+            },
+            {
+              name: "Patient History",
+              code: "#9b59b6",
+              data: "User",
+              action: () => navigation.navigate("PatientHistory"),
+            },
+          ]);
+        }
+      });
+    });
   };
 
   const [toggle_0, setToggle_0] = useState(false);
@@ -243,9 +241,9 @@ export const VitalPage = ({ navigation }) => {
           </View>
         </View>
         <Text style={styles.showData}>
-        showing data for 
-        {" " + moment().format('ll').split(' ')[0]} {pressedNum}
-      </Text>
+          showing data for
+          {" " + moment().format("ll").split(" ")[0]} {pressedNum}
+        </Text>
       </SafeAreaView>
       <SafeAreaView style={{ flex: 1 }}>
         <FlatGrid
@@ -283,7 +281,6 @@ let styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     height: 60,
-    // flex: 1,
     borderRadius: 10,
     width: "95%",
   },
@@ -300,14 +297,11 @@ let styles = StyleSheet.create({
     textAlign: "center",
     color: "black",
     fontSize: 20,
-    // backgroundColor: 'black'
   },
   gridView: {
     marginTop: 10,
-    // backgroundColor: 'white',
   },
   itemContainer: {
-    // backgroundColor: 'white',
     borderRadius: 10,
     padding: 10,
     height: 300,
