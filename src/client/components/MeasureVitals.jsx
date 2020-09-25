@@ -23,7 +23,6 @@ export const MeasureVitals = ({ navigation }) => {
     orientation: isPortrait() ? "portrait" : "landscape",
   });
 
-  // Event Listener for orientation changes
   Dimensions.addEventListener("change", () => {
     setState({
       orientation: isPortrait() ? "portrait" : "landscape",
@@ -204,7 +203,7 @@ export const MeasureVitals = ({ navigation }) => {
               temperature: temperature[0].data,
               bloodPressure: bloodPressure[0].data,
               oxygen: oxygen[0].data,
-              date: moment().format('YYYY-MM-DD')
+              date: moment().format("YYYY-MM-DD"),
             };
             fetch("http://192.168.1.235:3001/data", {
               method: "POST",
@@ -234,7 +233,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   itemContainer: {
-    // backgroundColor: 'white',
     borderRadius: 10,
     padding: 10,
     height: 200,

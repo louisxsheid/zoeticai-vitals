@@ -1,7 +1,7 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "concurrently \"expo start\" \"node src/server/server.js\"",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -15,6 +15,7 @@
     "@react-navigation/native": "^5.7.4",
     "@react-navigation/stack": "^5.9.1",
     "axios": "^0.20.0",
+    "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
