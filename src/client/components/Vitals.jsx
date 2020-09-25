@@ -6,8 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { TodayDate } from '../components/TodayDate'
-import { Calendar } from './Calendar';
-import { VitalData } from './VitalData'
+import { VitalPage } from './VitalPage';
 import { FloatButton } from './FloatButton';
 
 const Stack = createStackNavigator();
@@ -16,8 +15,7 @@ export const Vitals = ({navigation}) => {
   return(
     <>
       <TodayDate/>
-      <Calendar/>
-      <VitalData navigation={navigation}/>
+      <VitalPage navigation={navigation}/>
       <FloatButton navigation={navigation}/>
     </>
   )

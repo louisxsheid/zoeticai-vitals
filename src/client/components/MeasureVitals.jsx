@@ -123,7 +123,9 @@ export const MeasureVitals = ({ navigation }) => {
                     {
                       name: item.name,
                       code: item.code,
-                      data: `${Math.floor(Math.random() * 20 + 120)}/${Math.floor(Math.random() * 20 + 60)}`,
+                      data: `${Math.floor(
+                        Math.random() * 20 + 120
+                      )}/${Math.floor(Math.random() * 20 + 60)}`,
                     },
                   ]);
                 }, 2000);
@@ -160,26 +162,28 @@ export const MeasureVitals = ({ navigation }) => {
             <TouchableOpacity
               onPress={() => {
                 setTimeout(() => {
+                  setOxygen([
+                    {
+                      name: item.name,
+                      code: item.code,
+                      data: `${Math.floor(
+                        Math.random() * 5 + 95
+                      )}% ${Math.floor(Math.random() * 20 + 70)}bpm`,
+                    },
+                  ]);
+                }, 2000);
                 setOxygen([
                   {
                     name: item.name,
                     code: item.code,
-                    data: `${Math.floor(Math.random() * 5 + 95)}% ${Math.floor(
-                      Math.random() * 20 + 70
-                    )}bpm`,
+                    data: (
+                      <Image
+                        style={{ height: 100, width: 100 }}
+                        source={require("../../../assets/loading.gif")}
+                      />
+                    ),
                   },
                 ]);
-              }, 2000);
-              setOxygen([
-                {
-                  name: item.name,
-                  code: item.code,
-                  data: <Image
-                  style={{ height: 100, width: 100 }}
-                  source={require("../../../assets/loading.gif")}
-                />,
-                },
-              ]);
               }}
             >
               <View
@@ -200,7 +204,7 @@ export const MeasureVitals = ({ navigation }) => {
               temperature: temperature[0].data,
               bloodPressure: bloodPressure[0].data,
               oxygen: oxygen[0].data,
-              patient: "user1",
+              date: moment().format('YYYY-MM-DD')
             };
             fetch("http://192.168.1.235:3001/data", {
               method: "POST",

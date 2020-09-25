@@ -6,9 +6,9 @@ const requestController = {};
 
 // add request middleware
 requestController.postVitals = (req, res, next) => {
-  const { temperature, bloodPressure, oxygen, patient } = req.body;
+  const { temperature, bloodPressure, oxygen, date } = req.body;
   models
-    .create({ temperature, bloodPressure, oxygen, patient })
+    .create({ temperature, bloodPressure, oxygen, date })
     .then((result) => {
       res.locals.vitals = result;
       return next();
@@ -38,20 +38,23 @@ requestController.getVitals = (req, res, next) => {
     });
 };
 
-// requestController.getVitalFromDay = (req, res, next) => {
-//   models
-//     .find()
-//     .exec()
-//     .then((vitalList) => {
-//       res.locals.vitals = vitalList;
-//       return next();
-//     })
-//     .catch((err) => {
-//       next({
-//         log: 'Error in getVitals controller',
-//         message: { err: `Error: ${err}` },
-//       });
-//     });
-// };
+requestController.getVitalsFromDay = (req, res, next) => {
+  const { date } = req.body;
+  console.log(date)
+  models
+    .find({ date: date })
+    .exec()
+    .then((day) => {
+      res.locals.dayVitals = day;
+      console.log('haha',res.locals.dayVitals)
+      return next();
+    })
+    .catch((err) => {
+      next({
+        log: 'Error in getVitals controller',
+        message: { err: `Error: ${err}` },
+      });
+    });
+};
 
 module.exports = { requestController };

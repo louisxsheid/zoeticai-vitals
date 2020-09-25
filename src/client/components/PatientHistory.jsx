@@ -4,26 +4,21 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const moment = require("moment");
 
-import { Center } from "./Center";
-
 export const PatientHistory = ({ navigation }) => {
   const [state, setState] = useState([]);
-  const [loading, setloading] = useState(true)
-  // const getData = async () => {
-  // console.log('IN GET DATA')
+  const [loading, setloading] = useState(true);
   useEffect(() => {
     let mounted = true;
     fetch("http://192.168.1.235:3001/data")
       .then((res) => res.json())
       .then((response) => {
-        if(mounted){
-          setloading(false)
+        if (mounted) {
+          setloading(false);
           setState(response);
         }
       })
       .catch((err) => console.log(err));
-    // console.log('DATA GOT')
-    return function cleanup(){
+    return function cleanup() {
       mounted = false;
     };
   });
@@ -33,19 +28,31 @@ export const PatientHistory = ({ navigation }) => {
       <Text style={styles.title}>Patient History</Text>
       <ScrollView>
         <View style={styles.histContainer}>
-          {loading ? <Text style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>Loading...</Text> : state &&
+          {loading ? (
+            <Text
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Loading...
+            </Text>
+          ) : (
+            state &&
             state.map((item) => {
               return (
                 <View key={item._id} style={styles.dataContainer}>
                   <Text style={{ fontWeight: "bold", fontSize: 25 }}>
-                    {moment(item.time).format("DD-MMM-YYYY")}
+                    {item.date}
                   </Text>
                   <Text style={{ fontSize: 25 }}>Tmp: {item.temperature}</Text>
                   <Text style={{ fontSize: 25 }}>BP: {item.bloodPressure}</Text>
                   <Text style={{ fontSize: 25 }}>Ox: {item.oxygen} </Text>
                 </View>
               );
-            })}
+            })
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>

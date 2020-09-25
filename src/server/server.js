@@ -30,9 +30,13 @@ app.get("/data", requestController.getVitals, (req, res) => {
   return res.status(200).send(res.locals.vitals);//.json(res.locals.data);
 });
 
-app.post("/data", requestController.postVitals, (req, res) => {
+app.post("/data", requestController.postVitals,  (req, res) => {
   return res.status(200).send(res.locals.vitals)//.json(res.locals.data);
 });
+
+app.post('/day-data', requestController.getVitalsFromDay, (req, res) => {
+  return res.status(200).send(res.locals.dayVitals);
+})
 
 // Global Error handler
 app.use((err, req, res, next) => {
